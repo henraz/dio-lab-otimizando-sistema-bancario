@@ -17,7 +17,7 @@ usuarios = []
 contas = []
 
 
-def deposito(saldo_conta, extrato_conta) -> tuple:
+def deposito(saldo_conta, extrato_conta, /) -> tuple:
 
     print("\nOpção selecionada: [D] - Depósito.")
     valor_deposito = float(input("Digite a quantidade desejada para depósito: "))
@@ -33,7 +33,7 @@ def deposito(saldo_conta, extrato_conta) -> tuple:
     return saldo_conta, extrato_conta
 
 
-def saque(saldo_conta=saldo, num_saque=quantidade_saque, extrato_conta=desc_extrato) -> tuple:
+def saque(*, saldo_conta, num_saque, extrato_conta) -> tuple:
 
     print("\nOpção selecionada: [S] - Saque.")
     
@@ -62,7 +62,7 @@ def saque(saldo_conta=saldo, num_saque=quantidade_saque, extrato_conta=desc_extr
     return saldo_conta, num_saque, extrato_conta
 
 
-def extrato(saldo_conta, extrato_conta=desc_extrato) -> None:
+def extrato(saldo_conta, /, *, extrato_conta) -> None:
 
     print("\nOpção selecionada: [E] - Extrato.")
     print(f"\n{' Extrato Bancário ':#^60}") 
@@ -74,7 +74,7 @@ def extrato(saldo_conta, extrato_conta=desc_extrato) -> None:
     print("")
     print(60*"#")
 
-    return None
+    return extrato_conta
 
 
 def verifica_cpf_usuario(lista_usuarios, cpf) -> int:
